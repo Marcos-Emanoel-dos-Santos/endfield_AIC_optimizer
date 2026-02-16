@@ -1,0 +1,12 @@
+*{
+    color: var(--cinza_escuro_endfield);
+    font-family: "Sansation", sans-serif;
+    font-weight: 400;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
