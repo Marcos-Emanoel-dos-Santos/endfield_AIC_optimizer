@@ -2,6 +2,7 @@ import dadosReceita from './receitas.json';
 
 type Receita = {
     tempo_base: number;
+    qualidade: string;
     unidade_producao: string;
     output: number;
     ingredientes: Record<string, number>;

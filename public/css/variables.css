@@ -2,6 +2,11 @@
     --branco_endfield: #F1F3F4;
     --cinza_endfield: #7E807C;
     --cinza_escuro_endfield: #444444;
-    --cinza_escuro_transparente_endfield: #44444450;
+    --cinza_escuro_transparente_endfield: #44444440;
     --amarelo_endfield: #E2F13C;
+
+    --branco_raridade_item: rgb(154, 154, 154);
+    --verde_raridade_item: rgb(171, 204, 64);
+    --azul_raridade_item: rgb(45, 187, 243);
+    --roxo_raridade_item: rgb(125, 68, 207);
 }

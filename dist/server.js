@@ -17,6 +17,23 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
+const checarCorMat_1 = require("./checarCorMat");
+app.post("/api/envioCor", (req, res) => {
+    const { mat } = req.body;
+    try {
+        const corMat = (0, checarCorMat_1.checarCorMat)(mat);
+        res.json({
+            status: "ok",
+            cor: corMat
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            status: "erro",
+            mensagem: error instanceof Error ? error.message : "Erro desconhecido."
+        });
+    }
+});
 const calculo_1 = require("./calculos/calculo");
 app.post("/api/envioMats", (req, res) => {
     const { filtro } = req.body;

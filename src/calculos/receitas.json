@@ -1,30 +1,247 @@
 {
-    "po_folha_rugosa": {
-        "tempo_base": 2,
-        "unidade_producao": "Unidade de trituração",
-        "output": 3,
-        "ingredientes": {
-            "folha_rugosa": 1
-        }
-    },
-
-
     "minerio_originium": {
         "tempo_base": 0,
+        "qualidade": "branco",
         "unidade_producao": "broca",
         "output": 1,
         "ingredientes": {}
     },
+    "minerio_ametista": {
+        "tempo_base": 0,
+        "qualidade": "branco",
+        "unidade_producao": "broca",
+        "output": 1,
+        "ingredientes": {}
+    },
+    "minerio_ferrium": {
+        "tempo_base": 0,
+        "qualidade": "branco",
+        "unidade_producao": "broca",
+        "output": 1,
+        "ingredientes": {}
+    },
+
+
+
+    "ferrium": {
+        "tempo_base": 2,
+        "qualidade": "verde",
+        "unidade_producao": "Unidade de refinaria",
+        "output": 1,
+        "ingredientes": {
+            "minerio_ferrium": 1
+        }
+    },
+    "fibra_ametista": {
+        "tempo_base": 2,
+        "qualidade": "verde",
+        "unidade_producao": "Unidade de refinaria",
+        "output": 1,
+        "ingredientes": {
+            "minerio_ametista": 1
+        }
+    },
+    "origocrosta": {
+        "tempo_base": 2,
+        "qualidade": "verde",
+        "unidade_producao": "Unidade de refinaria",
+        "output": 1,
+        "ingredientes": {
+            "minerio_originium": 1
+        }
+    },
+    "carbono": {
+        "tempo_base": 2,
+        "qualidade": "verde",
+        "unidade_producao": "Unidade de refinaria",
+        "output": 1,
+        "ingredientes": {
+            "flor_cervina": 1
+        }
+    },
+    "origocrosta_compactada": {
+        "tempo_base": 2,
+        "qualidade": "azul",
+        "unidade_producao": "Unidade de refinaria",
+        "output": 1,
+        "ingredientes": {
+            "po_origocrosta_denso": 1
+        }
+    },
+    "aco": {
+        "tempo_base": 2,
+        "qualidade": "azul",
+        "unidade_producao": "Unidade de refinaria",
+        "output": 1,
+        "ingredientes": {
+            "po_ferrium_denso": 1
+        }
+    },
+    "fibra_criston": {
+        "tempo_base": 2,
+        "qualidade": "azul",
+        "unidade_producao": "Unidade de refinaria",
+        "output": 1,
+        "ingredientes": {
+            "po_criston": 1
+        }
+    },
+    "carbono_estabilizado": {
+        "tempo_base": 2,
+        "qualidade": "azul",
+        "unidade_producao": "Unidade de refinaria",
+        "output": 1,
+        "ingredientes": {
+            "po_carbono_denso": 1
+        }
+    },
+
+
+
+    "po_ferrium": {
+        "tempo_base": 2,
+        "qualidade": "",
+        "unidade_producao": "Unidade de trituração",
+        "output": 1,
+        "ingredientes": {
+            "ferrium": 1
+        }
+    },
+    "po_ametista": {
+        "tempo_base": 2,
+        "qualidade": "verde",
+        "unidade_producao": "Unidade de trituração",
+        "output": 1,
+        "ingredientes": {
+            "fibra_ametista": 1
+        }
+    },
     "po_originium": {
         "tempo_base": 2,
+        "qualidade": "",
         "unidade_producao": "Unidade de trituração",
         "output": 1,
         "ingredientes": {
             "minerio_originium": 1
         }
     },
+    "po_carbono": {
+        "tempo_base": 2,
+        "qualidade": "verde",
+        "unidade_producao": "Unidade de trituração",
+        "output": 2,
+        "ingredientes": {
+            "carbono": 1
+        }
+    },
+    "po_origocrosta": {
+        "tempo_base": 2,
+        "qualidade": "verde",
+        "unidade_producao": "Unidade de trituração",
+        "output": 1,
+        "ingredientes": {
+            "origocrosta": 1
+        }
+    },
+    "po_cervina": {
+        "tempo_base": 2,
+        "qualidade": "verde",
+        "unidade_producao": "Unidade de trituração",
+        "output": 2,
+        "ingredientes": {
+            "cervina": 1
+        }
+    },
+    "po_citroma": {
+        "tempo_base": 2,
+        "qualidade": "verde",
+        "unidade_producao": "Unidade de trituração",
+        "output": 2,
+        "ingredientes": {
+            "citroma": 1
+        }
+    },
+    "po_folha_rugosa": {
+        "tempo_base": 2,
+        "qualidade": "verde",
+        "unidade_producao": "Unidade de trituração",
+        "output": 3,
+        "ingredientes": {
+            "folha_rugosa": 1
+        }
+    },
+    "po_aketina": {
+        "tempo_base": 2,
+        "qualidade": "verde",
+        "unidade_producao": "Unidade de trituração",
+        "output": 2,
+        "ingredientes": {
+            "aketina": 1
+        }
+    },
+    "po_capim_seda": {
+        "tempo_base": 2,
+        "qualidade": "verde",
+        "unidade_producao": "Unidade de trituração",
+        "output": 2,
+        "ingredientes": {
+            "capim_seda": 1
+        }
+    },
+    "po_broto_agulha": {
+        "tempo_base": 2,
+        "qualidade": "verde",
+        "unidade_producao": "Unidade de trituração",
+        "output": 2,
+        "ingredientes": {
+            "broto_agulha": 1
+        }
+    },
+
+
+
+    "peca_ferrium": {
+        "tempo_base": 2,
+        "qualidade": "verde",
+        "unidade_producao": "Unidade de montagem",
+        "output": 1,
+        "ingredientes": {
+            "ferrium": 1
+        }
+    },
+    "peca_ametista": {
+        "tempo_base": 2,
+        "qualidade": "verde",
+        "unidade_producao": "Unidade de montagem",
+        "output": 1,
+        "ingredientes": {
+            "fibra_ametista": 1
+        }
+    },
+    "peca_aco": {
+        "tempo_base": 2,
+        "qualidade": "azul",
+        "unidade_producao": "Unidade de montagem",
+        "output": 1,
+        "ingredientes": {
+            "aco": 1
+        }
+    },
+    "peca_criston": {
+        "tempo_base": 2,
+        "qualidade": "azul",
+        "unidade_producao": "Unidade de trituração",
+        "output": 1,
+        "ingredientes": {
+            "fibra_criston": 1
+        }
+    },
+
+
+
     "po_originium_denso": {
         "tempo_base": 2,
+        "qualidade": "",
         "unidade_producao": "Unidade de moagem",
         "output": 1,
         "ingredientes": {
@@ -32,83 +249,9 @@
             "po_folha_rugosa": 1
         }
     },
-
-    "origocrosta": {
-        "tempo_base": 2,
-        "unidade_producao": "Unidade de refinaria",
-        "output": 1,
-        "ingredientes": {
-            "minerio_originium": 1
-        }
-    },
-    "po_origocrosta": {
-        "tempo_base": 2,
-        "unidade_producao": "Unidade de trituração",
-        "output": 1,
-        "ingredientes": {
-            "origocrosta": 1
-        }
-    },
-    "po_origocrosta_denso": {
-        "tempo_base": 2,
-        "unidade_producao": "Unidade de refinaria",
-        "output": 1,
-        "ingredientes": {
-            "po_origocrosta": 2,
-            "po_folha_rugosa": 1
-        }
-    },
-    "origocrosta_compactada": {
-        "tempo_base": 2,
-        "unidade_producao": "Unidade de refinaria",
-        "output": 1,
-        "ingredientes": {
-            "po_origocrosta_denso": 1
-        }
-    },
-
-
-
-    "minerio_ametista": {
-        "tempo_base": 0,
-        "unidade_producao": "broca",
-        "output": 1,
-        "ingredientes": {}
-    },
-    "fibra_ametista": {
-        "tempo_base": 2,
-        "unidade_producao": "Unidade de refinaria",
-        "output": 1,
-        "ingredientes": {
-            "minerio_ametista": 1
-        }
-    },
-
-
-    "minerio_ferrium": {
-        "tempo_base": 0,
-        "unidade_producao": "broca",
-        "output": 1,
-        "ingredientes": {}
-    },
-    "ferrium": {
-        "tempo_base": 2,
-        "unidade_producao": "Unidade de refinaria",
-        "output": 1,
-        "ingredientes": {
-            "minerio_ferrium": 1
-        }
-    },
-    "po_ferrium": {
-        "tempo_base": 2,
-        "unidade_producao": "Unidade de trituração",
-        "output": 1,
-        "ingredientes": {
-            "ferrium": 1
-        }
-    },
     "po_ferrium_denso": {
         "tempo_base": 2,
+        "qualidade": "",
         "unidade_producao": "Unidade de moagem",
         "output": 1,
         "ingredientes": {
@@ -116,24 +259,22 @@
             "po_folha_rugosa": 1
         }
     },
-    "aco": {
+
+    "po_origocrosta_denso": {
         "tempo_base": 2,
-        "unidade_producao": "Unidade de refinaria",
+        "qualidade": "",
+        "unidade_producao": "Unidade de moagem",
         "output": 1,
         "ingredientes": {
-            "po_ferrium_denso": 1
+            "po_origocrosta": 2,
+            "po_folha_rugosa": 1
         }
     },
-    "peca_aco": {
-        "tempo_base": 2,
-        "unidade_producao": "Unidade de montagem",
-        "output": 1,
-        "ingredientes": {
-            "aco": 1
-        }
-    },
+    
+    
     "bateria_CA": {
         "tempo_base": 10,
+        "qualidade": "roxo",
         "unidade_producao": "Unidade de embalagem",
         "output": 1,
         "ingredientes": {
