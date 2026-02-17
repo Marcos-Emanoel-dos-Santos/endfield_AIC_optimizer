@@ -1,6 +1,12 @@
 import express from "express";
 import path from "path";
 
+import { calcularEficienciaMaxima } from './calculo';
+import { checarCorMat } from "./checarCorMat";
+import dadosReceita from './db.json';
+
+const db: Record<string, any> = dadosReceita;
+
 const app = express();
 const PORT = 3000;
 
@@ -19,7 +25,30 @@ app.listen(PORT, () => {
 });
 
 
-import { checarCorMat } from "./checarCorMat";
+app.get("/api/envioMats", (req: express.Request, res: express.Response) => {
+  try{
+    const listaDeItens = Object.entries(db)
+    .filter(([idItem, dadosReceita]) => dadosReceita.oculto !== true)
+    .map(([idItem, dadosReceita]) => {
+      return {
+        id: idItem,
+        nome: dadosReceita.nome,
+        icon: dadosReceita.icon,
+        qualidade: dadosReceita.qualidade,
+        unidadeProducao: dadosReceita.unidade_producao
+      }
+    });
+
+    res.status(200).json({
+      status: "ok",
+      quantidade: listaDeItens.length,
+      dados: listaDeItens
+    })
+
+  } catch(erro){
+    console.error("Erro na aquisição: ", erro);
+  }
+})
 
 app.post("/api/envioCor", (req: express.Request, res: express.Response) => {
   const { mat } = req.body;
@@ -39,8 +68,6 @@ app.post("/api/envioCor", (req: express.Request, res: express.Response) => {
   }
 });
 
-
-import { calcularEficienciaMaxima } from './calculos/calculo';
 
 app.post("/api/envioMats", (req: express.Request, res: express.Response) => {
     const { filtro }: { filtro: string } = req.body;

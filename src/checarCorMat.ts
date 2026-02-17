@@ -1,12 +1,6 @@
-import dadosReceita from "./calculos/db.json";
+import dadosReceita from "./db.json";
+import { Receita } from './dbStruct';
 
-type Receita = {
-    tempo_base: number;
-    qualidade: string;
-    unidade_producao: string;
-    output: number;
-    ingredientes: Record<string, number>;
-}
 
 const db: Record<string, Receita> = dadosReceita
 

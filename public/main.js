@@ -32,44 +32,52 @@ divArray.forEach(div => {
     });
 });
 
-async function atribuirCorBordaItens(){
-    for(const div of divArray){
-    const material = div.dataset.valor;
-        try{
-            const resposta = await fetch("/api/envioCor", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({mat: material})
-                })
 
-            const dados = await resposta.json();
-            const corEsperada = dados.cor;
-            
-            const img = div.querySelector("img");
-            switch(corEsperada){
-                case "branco":
-                    img.classList.add('borda_branca');
-                    break;
-                case "verde":
-                    img.classList.add('borda_verde');
-                    break;
-                case "azul":
-                    img.classList.add('borda_azul');
-                    break;
-                case "roxo":
-                    img.classList.add('borda_roxa');
-                default:
-                    break;
+async function carregarMateriais(){
+    const resposta = await fetch("/api/envioMats");
+    const json = await resposta.json();
+    const dados = json.dados;
+    const secaoGeralMateriais = document.getElementById('secao_materiais');
 
+    const tradutorBorda = {
+        "branco": "borda_branca",
+        "verde": "borda_verde",
+        "azul": "borda_azul",
+        "roxo": "borda_roxa",
+    };
+
+
+    secaoGeralMateriais.innerHTML = ``;
+
+    const categorias = dados.reduce((acc, item) => {
+        const cat = item.unidadeProducao;
+        if(!acc[cat]) acc[cat] = [];
+
+        acc[cat].push(item);
+        return acc
+    }, {});
+
+    for(const [nomeCategoria, itens] of Object.entries(categorias)){
+        const secaoEspecifica = document.createElement('section');
+        const classe = nomeCategoria.toLowerCase().split(' ').pop();
+        secaoEspecifica.className = `secao_especifica ${classe};`
+
+        secaoEspecifica.innerHTML = `
+        <h2 class="titulo_secao_materiais">${nomeCategoria}</h2>
+        <div class="material_lista">
+            ${itens.map(item => `
+                <div class="material_opcao" data-valor="${item.idItem}">
+                    <img src="${item.icon}" alt="${item.nome}" class="${tradutorBorda[item.qualidade]}">
+                    <p>${item.nome}</p>
+                </div>
+            `).join('')
             }
-    }
-        catch(erro){
-            console.error("Erro na aquisição: ", erro);
-        }
+        </div>
+        `;
+
+        secaoGeralMateriais.appendChild(secaoEspecifica);
     }
 }
 
 
-document.addEventListener("DOMContentLoaded", atribuirCorBordaItens);
+document.addEventListener("DOMContentLoaded", carregarMateriais);

@@ -173,6 +173,10 @@
         "icon": "icon/carbono.png",
         "ingredientes": {
             "flor_cervina": 1
+        },
+        "ingredientes_alternativos": {
+            "folha_rugosa": 1,
+            "citroma": 1
         }
     },
     "origocrosta_compactada": {

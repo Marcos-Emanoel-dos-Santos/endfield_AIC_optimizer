@@ -8,7 +8,7 @@ main{
 }
 
 
-.secao_materiais{
+#secao_materiais{
     display: flex;
     flex-direction: column;
     width: 100%;
