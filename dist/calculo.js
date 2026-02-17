@@ -13,7 +13,9 @@ function calcularEficienciaMaxima(idItemFinal) {
     const necessidadesBrutas = {};
     function buscarIngredientes(idItem, qtdDesejada) {
         const receita = db[idItem];
-        if (!receita || !receita.ingredientes || Object.keys(receita.ingredientes).length === 0) {
+        const temEtiquetaDeBase = receita?.recurso_base === true;
+        const ehItemPesquisado = idItem === idItemFinal;
+        if (!receita || !receita.ingredientes || Object.keys(receita.ingredientes).length === 0 || (temEtiquetaDeBase && !ehItemPesquisado)) {
             necessidadesBrutas[idItem] = (necessidadesBrutas[idItem] || 0) + qtdDesejada;
             return;
         }

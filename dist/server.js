@@ -27,7 +27,7 @@ app.get("/api/envioMats", (req, res) => {
             .filter(([idItem, dadosReceita]) => dadosReceita.oculto !== true)
             .map(([idItem, dadosReceita]) => {
             return {
-                id: idItem,
+                idItem: idItem,
                 nome: dadosReceita.nome,
                 icon: dadosReceita.icon,
                 qualidade: dadosReceita.qualidade,

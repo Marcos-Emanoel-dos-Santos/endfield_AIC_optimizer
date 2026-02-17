@@ -31,7 +31,7 @@ app.get("/api/envioMats", (req: express.Request, res: express.Response) => {
     .filter(([idItem, dadosReceita]) => dadosReceita.oculto !== true)
     .map(([idItem, dadosReceita]) => {
       return {
-        id: idItem,
+        idItem: idItem,
         nome: dadosReceita.nome,
         icon: dadosReceita.icon,
         qualidade: dadosReceita.qualidade,

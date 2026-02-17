@@ -65,7 +65,8 @@
         "icon": "icon/",
         "ingredientes": {
             "folha_rugosa_bruta": 1
-        }
+        },
+        "recurso_base": true
     },
     "semente_citroma": {
         "nome": "Semente de citroma",
@@ -76,7 +77,8 @@
         "icon": "icon/",
         "ingredientes": {
             "citroma_bruta": 1
-        }
+        },
+        "recurso_base": true
     },
     "semente_cervina": {
         "nome": "Semente de flor de cervina",
@@ -87,7 +89,8 @@
         "icon": "icon/",
         "ingredientes": {
             "flor_cervina_bruta": 1
-        }
+        },
+        "recurso_base": true
     },
     "folha_rugosa": {
         "nome": "Folha rugosa",
@@ -98,7 +101,8 @@
         "icon": "icon/folha_rugosa.png",
         "ingredientes": {
             "semente_folha_rugosa": 1
-        }
+        },
+        "recurso_base": true
     },
     "citroma": {
         "nome": "Citroma",
@@ -109,7 +113,8 @@
         "icon": "icon/citroma.png",
         "ingredientes": {
             "semente_citroma": 1
-        }
+        },
+        "recurso_base": true
     },
     "flor_cervina": {
         "nome": "Flor de cervina",
@@ -120,7 +125,8 @@
         "icon": "icon/flor_cervina.png",
         "ingredientes": {
             "semente_cervina": 1
-        }
+        },
+        "recurso_base": true
     },
     "ferrium": {
         "nome": "Ferrium",
