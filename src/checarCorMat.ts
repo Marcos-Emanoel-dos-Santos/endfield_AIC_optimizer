@@ -1,4 +1,4 @@
-import dadosReceita from "./calculos/receitas.json";
+import dadosReceita from "./calculos/db.json";
 
 type Receita = {
     tempo_base: number;

@@ -1,10 +1,12 @@
-import dadosReceita from './receitas.json';
+import dadosReceita from './db.json';
 
 type Receita = {
+    nome: string;
     tempo_base: number;
     qualidade: string;
     unidade_producao: string;
     output: number;
+    icon: string;
     ingredientes: Record<string, number>;
 }
 

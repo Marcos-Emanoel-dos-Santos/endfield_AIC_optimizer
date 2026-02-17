@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.calcularEficienciaMaxima = calcularEficienciaMaxima;
-const receitas_json_1 = __importDefault(require("./receitas.json"));
-const db = receitas_json_1.default;
+const db_json_1 = __importDefault(require("./db.json"));
+const db = db_json_1.default;
 function calcularEficienciaMaxima(idItemFinal) {
     const receitaFinal = db[idItemFinal];
     if (!receitaFinal)

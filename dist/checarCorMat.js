@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.checarCorMat = checarCorMat;
-const receitas_json_1 = __importDefault(require("./calculos/receitas.json"));
-const db = receitas_json_1.default;
+const db_json_1 = __importDefault(require("./calculos/db.json"));
+const db = db_json_1.default;
 function checarCorMat(idItem) {
     const material = db[idItem];
     if (!material)
