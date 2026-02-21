@@ -29,17 +29,17 @@
 
     "folha_rugosa_bruta": {
         "nome": "Folha rugosa",
-        "tempo_base": 0,
+        "tempo_base": 2,
         "qualidade": "branco",
         "unidade_producao": "",
         "output": 1,
-        "icon": "icon/",
+        "icon": "icon/folha_rugosa.png",
         "ingredientes": {},
         "oculto": true
     },
     "citroma_bruta": {
         "nome": "Citroma",
-        "tempo_base": 1,
+        "tempo_base": 2,
         "qualidade": "branco",
         "unidade_producao": "",
         "output": 1,
@@ -49,7 +49,7 @@
     },
     "flor_cervina_bruta": {
         "nome": "Flor de cervina",
-        "tempo_base": 0,
+        "tempo_base": 2,
         "qualidade": "branco",
         "unidade_producao": "",
         "output": 1,
@@ -62,11 +62,11 @@
 
     "semente_folha_rugosa": {
         "nome": "Semente de folha rugosa",
-        "tempo_base": 0,
+        "tempo_base": 2,
         "qualidade": "branco",
         "unidade_producao": "Unidade de coleta de sementes",
         "output": 2,
-        "icon": "icon/",
+        "icon": "icon/semente_folha_rugosa.png",
         "ingredientes": {
             "folha_rugosa_bruta": 1
         },
@@ -74,11 +74,11 @@
     },
     "semente_citroma": {
         "nome": "Semente de citroma",
-        "tempo_base": 0,
+        "tempo_base": 2,
         "qualidade": "branco",
         "unidade_producao": "Unidade de coleta de sementes",
         "output": 2,
-        "icon": "icon/",
+        "icon": "icon/semente_citroma.png",
         "ingredientes": {
             "citroma_bruta": 1
         },
@@ -86,11 +86,11 @@
     },
     "semente_cervina": {
         "nome": "Semente de flor de cervina",
-        "tempo_base": 0,
+        "tempo_base": 2,
         "qualidade": "branco",
         "unidade_producao": "Unidade de coleta de sementes",
         "output": 2,
-        "icon": "icon/",
+        "icon": "icon/semente_cervina.png",
         "ingredientes": {
             "flor_cervina_bruta": 1
         },
@@ -100,7 +100,7 @@
 
     "folha_rugosa": {
         "nome": "Folha rugosa",
-        "tempo_base": 0,
+        "tempo_base": 2,
         "qualidade": "branco",
         "unidade_producao": "Unidade de plantio",
         "output": 1,
@@ -112,7 +112,7 @@
     },
     "citroma": {
         "nome": "Citroma",
-        "tempo_base": 0,
+        "tempo_base": 2,
         "qualidade": "branco",
         "unidade_producao": "Unidade de plantio",
         "output": 1,
@@ -124,7 +124,7 @@
     },
     "flor_cervina": {
         "nome": "Flor de cervina",
-        "tempo_base": 0,
+        "tempo_base": 2,
         "qualidade": "branco",
         "unidade_producao": "Unidade de plantio",
         "output": 2,

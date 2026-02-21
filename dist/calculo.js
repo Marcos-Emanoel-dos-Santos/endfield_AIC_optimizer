@@ -55,5 +55,15 @@ function calcularEficienciaMaxima(idItemFinal) {
         resultadoFinal[item] = Math.round(valorBase * multiplicador);
     }
     resultadoFinal[idItemFinal] = multiplicador;
-    return resultadoFinal;
+    const resultadoFormatado = Object.entries(resultadoFinal).map(([id, qtd]) => {
+        const informacao_item = db[id];
+        return {
+            id: id,
+            quantidade: qtd,
+            nome: informacao_item?.nome,
+            icone: informacao_item?.icon,
+            qualidade: informacao_item?.qualidade
+        };
+    });
+    return resultadoFormatado;
 }

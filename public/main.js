@@ -44,6 +44,8 @@ async function carregarMateriais(){
     }
 }
 
+
+// BUSCAR DADOS QUANDO COMPONENTE FOR CLICADO
 document.getElementById('secao_materiais').addEventListener('click', async function(e) {
     const div = e.target.closest('.material_opcao');
     
@@ -66,13 +68,55 @@ document.getElementById('secao_materiais').addEventListener('click', async funct
             body: JSON.stringify({ filtro: valor })
         });
 
-        const dados = await resposta.json();
-        console.log(dados);
+        const resultado = await resposta.json();
+
+        exibirResultados(resultado);
         
     } catch (erro) {
         console.error("Erro na aquisição: ", erro);
     }
 });
 
+function exibirResultados(resposta){
+    console.log(resposta);
+
+    const resultadosSection = document.getElementById('resultados');
+
+    resultadosSection.innerHTML = ``;
+    
+    if(resposta.status !== "ok" || !resposta.dados){
+        resultadosSection.innerHTML = "<p style='color:#FF0000'>Erro ao processar dados</p>";
+        return;
+    }
+
+    const listaIngredientesSection = document.createElement('section');
+    listaIngredientesSection.classList.add('resultado_subSection');
+    listaIngredientesSection.classList.add('resultado_ingredientes');
+    const ingredientes = resposta.dados.slice(0, -1);
+    const produto = resposta.dados.slice(-1);
+
+    const listaIngredientesHtml = ingredientes.map(item => {
+        return `
+        <span class="nome"><img src="${item.icone}" alt="${item.nome}">${item.nome}:</span>
+        <span class="qtd">${item.quantidade}</span>
+        `
+    }).join('');
+
+    const produtoFinalHtml = produto.map(item => {
+        return `
+        <span class="nome"><img src="${item.icone}" alt="${item.nome}">${item.nome}:</span>
+        <span class="qtd">${item.quantidade}</span>
+        `
+    }).join('');
+
+    listaIngredientesSection.innerHTML = `
+    <h2>Ingredientes necessários</h2>
+    ${listaIngredientesHtml}
+    <h2>Produção final</h2>
+    ${produtoFinalHtml}
+    `;
+
+    resultadosSection.appendChild(listaIngredientesSection);
+}
 
 document.addEventListener("DOMContentLoaded", carregarMateriais);
