@@ -33,7 +33,7 @@ async function carregarMateriais(){
     for(const [nomeCategoria, itens] of Object.entries(categorias)){
         const secaoEspecifica = document.createElement('section');
         const classe = nomeCategoria.toLowerCase().split(' ').pop();
-        secaoEspecifica.className = `secao_especifica ${classe};`
+        secaoEspecifica.className = `secao_especifica ${classe}`
 
         secaoEspecifica.innerHTML = `
         <h2 class="titulo_secao_materiais">${nomeCategoria}</h2>
@@ -85,25 +85,10 @@ document.getElementById('secao_materiais').addEventListener('click', async funct
     }
 });
 
-
-function exibirResultados(resposta){
-    console.log(resposta);
-
-    const resultadosSection = document.getElementById('resultados');
-
-    resultadosSection.innerHTML = ``;
-    
-    if(resposta.status !== "ok" || !resposta.dados){
-        resultadosSection.innerHTML = "<p style='color:#FF0000'>Erro ao processar dados</p>";
-        return;
-    }
-
-    const listaMateriais = resposta.dados.mats;
-    const dadosParaGrafo = resposta.dados.graph;
-
+function createIngredientsResult(listaMateriais){
     const listaIngredientesSection = document.createElement('section');
-    listaIngredientesSection.classList.add('resultado_subSection');
-    listaIngredientesSection.classList.add('resultado_ingredientes');
+    listaIngredientesSection.classList.add('result_subSection');
+    listaIngredientesSection.classList.add('result_ingredientes');
     const ingredientes = listaMateriais.slice(0, -1);
     const produto = listaMateriais.slice(-1);
 
@@ -128,7 +113,95 @@ function exibirResultados(resposta){
     ${produtoFinalHtml}
     `;
 
+    return listaIngredientesSection;
+}
+
+
+function createGraphResult(graphData){
+    const graphSection = document.createElement('section');
+    graphSection.classList.add('result_subSection');
+    graphSection.classList.add('result_graph');
+
+    const nodesMap = new Map();
+    const edges = [];
+
+    graphData.forEach(conexao => {
+        if(!nodesMap.has(conexao.from)){
+            nodesMap.set(conexao.from, {
+                id: conexao.from,
+                label: conexao.from,
+                shape: 'circularImage',
+                image: conexao.icon
+            })
+        }
+        if(!nodesMap.has(conexao.to)){
+            nodesMap.set(conexao.to, {
+                id: conexao.to,
+                label: conexao.to,
+                shape: 'circularImage',
+                image: conexao.toIcon
+            })
+        }
+        edges.push({
+            from: conexao.from,
+            to: conexao.to,
+            label: conexao.facility,
+            arrows: 'to',
+            font: {color: '#000000', strokeWidth: 2}
+        });
+    });
+
+    const networkData = {
+        nodes: Array.from(nodesMap.values()),
+        edges: edges
+    }
+    const options = {
+        nodes: {
+            size: 30,
+            font: {color: '#000000', size: 12, vadjust: 0}
+        },
+        layout: {
+            hierarchical: {
+                direction: 'LR',
+                sortMethod: 'directed',
+                levelSeparation: 200
+            }
+        },
+        physics: true
+    }
+
+    return {section: graphSection, data: networkData, options: options};
+}
+
+
+function exibirResultados(resposta){
+    console.log(resposta);
+
+    const resultadosSection = document.getElementById('resultados');
+
+    resultadosSection.innerHTML = ``;
+    
+    if(resposta.status !== "ok" || !resposta.dados){
+        resultadosSection.innerHTML = "<p style='color:#FF0000'>Erro ao processar dados</p>";
+        return;
+    }
+
+    const listaMateriais = resposta.dados.mats;
+    const graphData = resposta.dados.graph;
+
+
+    const listaIngredientesSection = createIngredientsResult(listaMateriais);
     resultadosSection.appendChild(listaIngredientesSection);
+
+
+    const graphObj = createGraphResult(graphData);
+    const referenceHeight = listaIngredientesSection.offsetHeight;
+    graphObj.section.style.height = Math.max(referenceHeight, 400) + "px";
+    resultadosSection.appendChild(graphObj.section);
+
+
+    new vis.Network(graphObj.section, graphObj.data, graphObj.options);
+
     scrollSuave(resultadosSection);
 }
 

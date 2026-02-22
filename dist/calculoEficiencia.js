@@ -82,12 +82,15 @@ function calculateMaximumEfficiency(idFinalOutcome) {
         const neededCycles = desiredAmount / receipt.output;
         // RECURSION WITH MULTIPLIED NECESSITY FOR THE CURRENT FACILITY
         for (const [idIngredient, amountInReceipt] of Object.entries(receipt.ingredientes)) {
+            const info_material = db[idIngredient];
+            const info_parentMaterial = db[idMaterial];
             materialsCraftingTree.push({
-                from: idIngredient,
-                to: idMaterial,
+                from: info_material.nome,
+                to: info_parentMaterial.nome,
                 facility: receipt.unidade_producao,
                 amount: amountInReceipt,
-                icon: db[idIngredient].icon // TALVEZ PRECISE TROCAR PRA idMaterial
+                icon: info_material.icon,
+                toIcon: info_parentMaterial.icon
             });
             findIngredients(idIngredient, neededCycles * amountInReceipt);
         }

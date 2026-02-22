@@ -64,11 +64,11 @@ app.post("/api/envioCor", (req, res) => {
 app.post("/api/envioMats", (req, res) => {
     const { filter } = req.body;
     try {
-        const outputsNecessarios = (0, calculoEficiencia_1.calculateMaximumEfficiency)(filter);
+        const rawData = (0, calculoEficiencia_1.calculateMaximumEfficiency)(filter);
         res.json({
             status: "ok",
             recebido: filter,
-            dados: outputsNecessarios
+            dados: rawData
         });
     }
     catch (error) {

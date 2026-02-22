@@ -107,9 +107,10 @@ main > h1{
 #resultados{
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
 }
 
-.resultado_subSection{
+.result_subSection{
     width: calc(50% - 30px);
     border-radius: 30px;
     padding-bottom: 60px;
@@ -117,7 +118,7 @@ main > h1{
     background: linear-gradient(180deg, rgba(160, 170, 169, 1) 0%, rgba(160, 170, 169, 0) calc(100% - 30px));
 }
 
-.resultado_ingredientes{
+.result_ingredientes{
     display: grid;
     row-gap: 10px;
     grid-template-columns: 1fr 1fr;
@@ -126,7 +127,7 @@ main > h1{
 
 }
 
-.resultado_ingredientes h2{
+.result_ingredientes h2{
     grid-column: 1 / -1;
     width: 80%;
 
@@ -140,13 +141,13 @@ main > h1{
     border-bottom: var(--cinza_escuro_transparente_endfield) 3px solid;
 }
 
-.resultado_ingredientes img{
+.result_ingredientes img{
     width: 1.4em;
     height: auto;
     margin-right: 5px;
 }
 
-.resultado_ingredientes .nome{
+.result_ingredientes .nome{
     display: flex;
     flex-direction: row;
     justify-self: end;
@@ -156,7 +157,7 @@ main > h1{
     font-size: 1.2em;
 }
 
-.resultado_ingredientes .qtd{
+.result_ingredientes .qtd{
     display: flex;
     flex-direction: row-reverse;
     justify-self: start;
