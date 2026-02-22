@@ -1,3 +1,11 @@
+function scrollSuave(target){
+    target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    })
+}
+
+
 async function carregarMateriais(){
     const resposta = await fetch("/api/envioMats");
     const json = await resposta.json();
@@ -65,7 +73,7 @@ document.getElementById('secao_materiais').addEventListener('click', async funct
         const resposta = await fetch("/api/envioMats", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ filtro: valor })
+            body: JSON.stringify({ filter: valor })
         });
 
         const resultado = await resposta.json();
@@ -76,6 +84,7 @@ document.getElementById('secao_materiais').addEventListener('click', async funct
         console.error("Erro na aquisição: ", erro);
     }
 });
+
 
 function exibirResultados(resposta){
     console.log(resposta);
@@ -89,11 +98,14 @@ function exibirResultados(resposta){
         return;
     }
 
+    const listaMateriais = resposta.dados.mats;
+    const dadosParaGrafo = resposta.dados.graph;
+
     const listaIngredientesSection = document.createElement('section');
     listaIngredientesSection.classList.add('resultado_subSection');
     listaIngredientesSection.classList.add('resultado_ingredientes');
-    const ingredientes = resposta.dados.slice(0, -1);
-    const produto = resposta.dados.slice(-1);
+    const ingredientes = listaMateriais.slice(0, -1);
+    const produto = listaMateriais.slice(-1);
 
     const listaIngredientesHtml = ingredientes.map(item => {
         return `
@@ -117,6 +129,7 @@ function exibirResultados(resposta){
     `;
 
     resultadosSection.appendChild(listaIngredientesSection);
+    scrollSuave(resultadosSection);
 }
 
 document.addEventListener("DOMContentLoaded", carregarMateriais);

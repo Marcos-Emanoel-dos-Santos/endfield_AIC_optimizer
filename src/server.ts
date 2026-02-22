@@ -1,14 +1,13 @@
 import express from "express";
 import path from "path";
 
-import { calcularEficienciaMaxima } from './calculo';
+import { calculateMaximumEfficiency } from './calculoEficiencia';
 import { checarCorMat } from "./checarCorMat";
 import dadosReceita from './db.json';
 
 const db: Record<string, any> = dadosReceita;
 
 const app = express();
-const PORT = 3000;
 
 const publicPath = path.join(__dirname, "..", "public");
 
@@ -20,7 +19,10 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(publicPath, "index.html"));
 });
 
-app.listen(PORT, () => {
+
+const PORT = 3000;
+const HOST = '0.0.0.0';
+app.listen(PORT, HOST, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
 
@@ -70,14 +72,14 @@ app.post("/api/envioCor", (req: express.Request, res: express.Response) => {
 
 
 app.post("/api/envioMats", (req: express.Request, res: express.Response) => {
-    const { filtro }: { filtro: string } = req.body;
+    const { filter }: { filter: string } = req.body;
 
     try{
-        const outputsNecessarios = calcularEficienciaMaxima(filtro);
+        const rawData = calculateMaximumEfficiency(filter);
         res.json({
             status: "ok",
-            recebido: filtro,
-            dados: outputsNecessarios
+            recebido: filter,
+            dados: rawData
     })
     } catch(error){
         res.status(400).json({

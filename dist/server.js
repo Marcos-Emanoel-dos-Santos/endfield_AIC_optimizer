@@ -5,12 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
-const calculo_1 = require("./calculo");
+const calculoEficiencia_1 = require("./calculoEficiencia");
 const checarCorMat_1 = require("./checarCorMat");
 const db_json_1 = __importDefault(require("./db.json"));
 const db = db_json_1.default;
 const app = (0, express_1.default)();
-const PORT = 3000;
 const publicPath = path_1.default.join(__dirname, "..", "public");
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
@@ -18,7 +17,9 @@ app.use(express_1.default.static(publicPath));
 app.get("/", (req, res) => {
     res.sendFile(path_1.default.join(publicPath, "index.html"));
 });
-app.listen(PORT, () => {
+const PORT = 3000;
+const HOST = '0.0.0.0';
+app.listen(PORT, HOST, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
 app.get("/api/envioMats", (req, res) => {
@@ -61,12 +62,12 @@ app.post("/api/envioCor", (req, res) => {
     }
 });
 app.post("/api/envioMats", (req, res) => {
-    const { filtro } = req.body;
+    const { filter } = req.body;
     try {
-        const outputsNecessarios = (0, calculo_1.calcularEficienciaMaxima)(filtro);
+        const outputsNecessarios = (0, calculoEficiencia_1.calculateMaximumEfficiency)(filter);
         res.json({
             status: "ok",
-            recebido: filtro,
+            recebido: filter,
             dados: outputsNecessarios
         });
     }
