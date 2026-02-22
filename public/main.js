@@ -130,6 +130,7 @@ function createGraphResult(graphData){
             nodesMap.set(graphConnection.from, {
                 id: graphConnection.from,
                 label:  `${graphConnection.from} (${graphConnection.amount})`,
+                font: {color: '#000000', strokeWidth: 2},
                 shape: 'circularImage',
                 image: graphConnection.icon
             })
@@ -138,6 +139,7 @@ function createGraphResult(graphData){
             nodesMap.set(graphConnection.to, {
                 id: graphConnection.to,
                 label: `${graphConnection.to} (${graphConnection.toAmount})`,
+                font: {color: '#000000', strokeWidth: 2},
                 shape: 'circularImage',
                 image: graphConnection.toIcon
             })
@@ -164,7 +166,7 @@ function createGraphResult(graphData){
             hierarchical: {
                 direction: 'LR',
                 sortMethod: 'directed',
-                levelSeparation: 200
+                levelSeparation: 250
             }
         },
         physics: true
