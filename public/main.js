@@ -23,7 +23,7 @@ async function carregarMateriais(){
     secaoGeralMateriais.innerHTML = ``;
 
     const categorias = dados.reduce((acc, item) => {
-        const cat = item.unidadeProducao;
+        const cat = item.unidade_producao;
         if(!acc[cat]) acc[cat] = [];
 
         acc[cat].push(item);
@@ -125,27 +125,27 @@ function createGraphResult(graphData){
     const nodesMap = new Map();
     const edges = [];
 
-    graphData.forEach(conexao => {
-        if(!nodesMap.has(conexao.from)){
-            nodesMap.set(conexao.from, {
-                id: conexao.from,
-                label: conexao.from,
+    graphData.forEach(graphConnection => {
+        if(!nodesMap.has(graphConnection.from)){
+            nodesMap.set(graphConnection.from, {
+                id: graphConnection.from,
+                label:  `${graphConnection.from} (${graphConnection.amount})`,
                 shape: 'circularImage',
-                image: conexao.icon
+                image: graphConnection.icon
             })
         }
-        if(!nodesMap.has(conexao.to)){
-            nodesMap.set(conexao.to, {
-                id: conexao.to,
-                label: conexao.to,
+        if(!nodesMap.has(graphConnection.to)){
+            nodesMap.set(graphConnection.to, {
+                id: graphConnection.to,
+                label: `${graphConnection.to} (${graphConnection.toAmount})`,
                 shape: 'circularImage',
-                image: conexao.toIcon
+                image: graphConnection.toIcon
             })
         }
         edges.push({
-            from: conexao.from,
-            to: conexao.to,
-            label: conexao.facility,
+            from: graphConnection.from,
+            to: graphConnection.to,
+            label: graphConnection.unidade_producao,
             arrows: 'to',
             font: {color: '#000000', strokeWidth: 2}
         });

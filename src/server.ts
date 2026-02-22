@@ -37,7 +37,7 @@ app.get("/api/envioMats", (req: express.Request, res: express.Response) => {
         nome: dadosReceita.nome,
         icon: dadosReceita.icon,
         qualidade: dadosReceita.qualidade,
-        unidadeProducao: dadosReceita.unidade_producao
+        unidade_producao: dadosReceita.unidade_producao
       }
     });
 
@@ -51,24 +51,6 @@ app.get("/api/envioMats", (req: express.Request, res: express.Response) => {
     console.error("Erro na aquisição: ", erro);
   }
 })
-
-app.post("/api/envioCor", (req: express.Request, res: express.Response) => {
-  const { mat } = req.body;
-
-  try{
-    const corMat = checarCorMat(mat);
-    res.json({
-      status: "ok",
-      cor: corMat
-    })
-  }
-  catch(error){
-    res.status(400).json({
-      status: "erro",
-      mensagem: error instanceof Error ? error.message : "Erro desconhecido."
-    })
-  }
-});
 
 
 app.post("/api/envioMats", (req: express.Request, res: express.Response) => {
@@ -87,4 +69,23 @@ app.post("/api/envioMats", (req: express.Request, res: express.Response) => {
             mensagem: error instanceof Error ? error.message : "Erro desconhecido."
         });
     }
+});
+
+
+app.post("/api/envioCor", (req: express.Request, res: express.Response) => {
+  const { mat } = req.body;
+
+  try{
+    const corMat = checarCorMat(mat);
+    res.json({
+      status: "ok",
+      cor: corMat
+    })
+  }
+  catch(error){
+    res.status(400).json({
+      status: "erro",
+      mensagem: error instanceof Error ? error.message : "Erro desconhecido."
+    })
+  }
 });

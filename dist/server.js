@@ -32,7 +32,7 @@ app.get("/api/envioMats", (req, res) => {
                 nome: dadosReceita.nome,
                 icon: dadosReceita.icon,
                 qualidade: dadosReceita.qualidade,
-                unidadeProducao: dadosReceita.unidade_producao
+                unidade_producao: dadosReceita.unidade_producao
             };
         });
         res.status(200).json({
@@ -45,13 +45,14 @@ app.get("/api/envioMats", (req, res) => {
         console.error("Erro na aquisição: ", erro);
     }
 });
-app.post("/api/envioCor", (req, res) => {
-    const { mat } = req.body;
+app.post("/api/envioMats", (req, res) => {
+    const { filter } = req.body;
     try {
-        const corMat = (0, checarCorMat_1.checarCorMat)(mat);
+        const rawData = (0, calculoEficiencia_1.calculateMaximumEfficiency)(filter);
         res.json({
             status: "ok",
-            cor: corMat
+            recebido: filter,
+            dados: rawData
         });
     }
     catch (error) {
@@ -61,14 +62,13 @@ app.post("/api/envioCor", (req, res) => {
         });
     }
 });
-app.post("/api/envioMats", (req, res) => {
-    const { filter } = req.body;
+app.post("/api/envioCor", (req, res) => {
+    const { mat } = req.body;
     try {
-        const rawData = (0, calculoEficiencia_1.calculateMaximumEfficiency)(filter);
+        const corMat = (0, checarCorMat_1.checarCorMat)(mat);
         res.json({
             status: "ok",
-            recebido: filter,
-            dados: rawData
+            cor: corMat
         });
     }
     catch (error) {
