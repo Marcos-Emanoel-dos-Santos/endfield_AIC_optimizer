@@ -94,15 +94,15 @@ function createIngredientsResult(listaMateriais){
 
     const listaIngredientesHtml = ingredientes.map(item => {
         return `
-        <span class="nome"><img src="${item.icone}" alt="${item.nome}">${item.nome}:</span>
-        <span class="qtd">${item.quantidade}</span>
+        <span class="nome"><img src="${item.icon}" alt="${item.nome}">${item.nome}:</span>
+        <span class="qtd">${item.amount}</span>
         `
     }).join('');
 
     const produtoFinalHtml = produto.map(item => {
         return `
-        <span class="nome"><img src="${item.icone}" alt="${item.nome}">${item.nome}:</span>
-        <span class="qtd">${item.quantidade}</span>
+        <span class="nome"><img src="${item.icon}" alt="${item.nome}">${item.nome}:</span>
+        <span class="qtd">${item.amount}</span>
         `
     }).join('');
 

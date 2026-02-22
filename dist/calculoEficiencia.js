@@ -43,7 +43,7 @@ function formatToFrontend(outputResult, multiplier, idFinalOutcome) {
         finalResult[material] = Math.round(baseValue * multiplier);
     }
     finalResult[idFinalOutcome] = multiplier;
-    const formatedResult = Object.entries(finalResult).map(([id, amount]) => {
+    const formattedResult = Object.entries(finalResult).map(([id, amount]) => {
         const material_info = db[id];
         return {
             id: id,
@@ -53,7 +53,7 @@ function formatToFrontend(outputResult, multiplier, idFinalOutcome) {
             qualidade: material_info?.qualidade
         };
     });
-    return formatedResult;
+    return formattedResult;
 }
 // CALCULATES THE NUMBER OF OUTPUTS FOR MAXIMUM EFFICIENCY (ZERO RAW MATERIAL WASTE)
 function calculateMaximumEfficiency(idFinalOutcome) {
@@ -87,7 +87,7 @@ function calculateMaximumEfficiency(idFinalOutcome) {
             materialsCraftingTree.push({
                 from: info_material.nome,
                 to: info_parentMaterial.nome,
-                unidade_producao: receipt.unidade_producao,
+                unidade_producao: info_parentMaterial.unidade_producao,
                 amount: amountInReceipt,
                 icon: info_material.icon,
                 toIcon: info_parentMaterial.icon
@@ -99,10 +99,10 @@ function calculateMaximumEfficiency(idFinalOutcome) {
     findIngredients(idFinalOutcome, 1);
     const outputResult = calculateBaseOutcome(rawMaterialNeeded, receiptFinalOutcome);
     const multiplier = findPerfectMultiplier(outputResult);
-    const formatedResult = formatToFrontend(outputResult, multiplier, idFinalOutcome);
+    const formattedResult = formatToFrontend(outputResult, multiplier, idFinalOutcome);
     console.log(materialsCraftingTree);
     return {
-        mats: formatedResult,
+        mats: formattedResult,
         graph: materialsCraftingTree
     };
 }

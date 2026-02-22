@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
-const calculoEficiencia_1 = require("./calculoEficiencia");
+const efficiencyCalc_1 = require("./efficiencyCalc");
 const checarCorMat_1 = require("./checarCorMat");
 const db_json_1 = __importDefault(require("./db.json"));
 const db = db_json_1.default;
@@ -48,7 +48,7 @@ app.get("/api/envioMats", (req, res) => {
 app.post("/api/envioMats", (req, res) => {
     const { filter } = req.body;
     try {
-        const rawData = (0, calculoEficiencia_1.calculateMaximumEfficiency)(filter);
+        const rawData = (0, efficiencyCalc_1.calculateMaximumEfficiency)(filter);
         res.json({
             status: "ok",
             recebido: filter,

@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 
-import { calculateMaximumEfficiency } from './calculoEficiencia';
+import { calculateMaximumEfficiency } from './efficiencyCalc';
 import { checarCorMat } from "./checarCorMat";
 import dadosReceita from './db.json';
 

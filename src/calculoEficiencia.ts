@@ -62,7 +62,7 @@ function formatToFrontend(outputResult: Record<string, number>, multiplier: numb
     }
     finalResult[idFinalOutcome] = multiplier;
 
-    const formatedResult = Object.entries(finalResult).map(([id, amount]) => {
+    const formattedResult = Object.entries(finalResult).map(([id, amount]) => {
         const material_info = db[id];
         return {
             id: id,
@@ -73,7 +73,7 @@ function formatToFrontend(outputResult: Record<string, number>, multiplier: numb
         };
     })
 
-    return formatedResult;
+    return formattedResult;
 }
 
 
@@ -117,7 +117,7 @@ export function calculateMaximumEfficiency(idFinalOutcome: string) {
             materialsCraftingTree.push({
                 from: info_material.nome,
                 to: info_parentMaterial.nome,
-                unidade_producao: receipt.unidade_producao,
+                unidade_producao: info_parentMaterial.unidade_producao,
                 amount: amountInReceipt,
                 icon: info_material.icon,
                 toIcon: info_parentMaterial.icon
@@ -136,11 +136,11 @@ export function calculateMaximumEfficiency(idFinalOutcome: string) {
     const multiplier: number = findPerfectMultiplier(outputResult);
 
 
-    const formatedResult = formatToFrontend(outputResult, multiplier, idFinalOutcome);
+    const formattedResult = formatToFrontend(outputResult, multiplier, idFinalOutcome);
     
     console.log(materialsCraftingTree);
     return {
-        mats: formatedResult,
+        mats: formattedResult,
         graph: materialsCraftingTree
     };
 }

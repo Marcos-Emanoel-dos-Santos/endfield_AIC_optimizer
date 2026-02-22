@@ -18,9 +18,9 @@ function calculateBaseOutcome(rawMaterialNeeded: Record<string, number>, receita
     const outputResult: Record<string, number> = {};
 
     for(const [rawMaterial, totalAmount] of Object.entries(rawMaterialNeeded)){
-        const receita = db[rawMaterial];
+        const receipt = db[rawMaterial];
 
-        const time = (receita && receita.tempo_base > 0) ? receita.tempo_base : 2;
+        const time = (receipt && receipt.tempo_base > 0) ? receipt.tempo_base : 2;
 
         outputResult[rawMaterial] = totalAmount * (time / receitaFinalOutcome.tempo_base);
     }
@@ -91,34 +91,34 @@ export function calculateMaximumEfficiency(idFinalOutcome: string) {
 
     // FINDS NECESSARY RAW MATERIAL
     function findIngredients(idMaterial: string, desiredAmount: number){
-        const receita = db[idMaterial];
+        const receipt = db[idMaterial];
 
         // CYCLE BREAK VERIFICATION
-        const isRawMaterial = receita?.recurso_base === true;
+        const isRawMaterial = receipt?.recurso_base === true;
         const isDesiredMaterial = idMaterial === idFinalOutcome;
 
         // RECURSION STOPS WHETHER:
         // 1. DIDN'T FIND RECEIPT
         // 2. HAS NO INGREDIENTS (RAW MATERIAL)
         // 3. IS A RAW MATERIAL AND NOT WHAT USER SEARCHED FOR
-        if (!receita || !receita.ingredientes || Object.keys(receita.ingredientes).length === 0 || (isRawMaterial && !isDesiredMaterial)) {
+        if (!receipt || !receipt.ingredientes || Object.keys(receipt.ingredientes).length === 0 || (isRawMaterial && !isDesiredMaterial)) {
                 // SUMS ACCUMULATED NEEDS IN rawMaterialNeeded DICTIONARY AND ENDS THIS BRANCH
                 rawMaterialNeeded[idMaterial] = (rawMaterialNeeded[idMaterial] || 0) + desiredAmount;
                 return;
             }
         
         // CALCULATES HOW MANY CYCLES THE FACILITY NEEDS TO RUN
-        const neededCycles = desiredAmount / receita.output;
+        const neededCycles = desiredAmount / receipt.output;
 
 
         // RECURSION WITH MULTIPLIED NECESSITY FOR THE CURRENT FACILITY
-        for(const [idIngredient, amountInReceipt] of Object.entries(receita.ingredientes)){
+        for(const [idIngredient, amountInReceipt] of Object.entries(receipt.ingredientes)){
             const info_material = db[idIngredient];
             const info_parentMaterial = db[idMaterial];
             materialsCraftingTree.push({
                 from: info_material.nome,
                 to: info_parentMaterial.nome,
-                unidade_producao: info_material.unidade_producao,
+                unidade_producao: info_parentMaterial.unidade_producao,
                 amount: (neededCycles * amountInReceipt),
                 toAmount: desiredAmount,
                 icon: info_material.icon,
