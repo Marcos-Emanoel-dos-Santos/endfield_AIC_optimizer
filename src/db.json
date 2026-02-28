@@ -3,7 +3,7 @@
         "nome": "Minério de originium",
         "tempo_base": 0,
         "qualidade": "branco",
-        "unidade_producao": "Broca",
+        "unidade_producao": "Recurso base",
         "output": 1,
         "icon": "icon/minerio_originium.png",
         "ingredientes": {}
@@ -12,7 +12,7 @@
         "nome": "Minério de ametista",
         "tempo_base": 0,
         "qualidade": "branco",
-        "unidade_producao": "Broca",
+        "unidade_producao": "Recurso base",
         "output": 1,
         "icon": "icon/minerio_ametista.png",
         "ingredientes": {}
@@ -21,10 +21,20 @@
         "nome": "Minério de ferrium",
         "tempo_base": 0,
         "qualidade": "branco",
-        "unidade_producao": "Broca",
+        "unidade_producao": "Recurso base",
         "output": 1,
         "icon": "icon/minerio_ferrium.png",
         "ingredientes": {}
+    },
+    "aketina": {
+        "nome": "Aketina",
+        "tempo_base": 2,
+        "qualidade": "branco",
+        "unidade_producao": "Recurso base",
+        "output": 1,
+        "icon": "icon/aketina.png",
+        "ingredientes": {},
+        "recurso_base": true
     },
 
     "folha_rugosa_bruta": {
@@ -127,7 +137,7 @@
         "tempo_base": 2,
         "qualidade": "branco",
         "unidade_producao": "Unidade de plantio",
-        "output": 2,
+        "output": 1,
         "icon": "icon/flor_cervina.png",
         "ingredientes": {
             "semente_cervina": 1
@@ -295,7 +305,7 @@
         "output": 2,
         "icon": "icon/po_cervina.png",
         "ingredientes": {
-            "cervina": 1
+            "flor_cervina": 1
         }
     },
     "po_citroma": {
@@ -403,6 +413,45 @@
 
 
 
+    "componente_ametista": {
+        "nome": "Componente de ametista",
+        "tempo_base": 10,
+        "qualidade": "verde",
+        "unidade_producao": "Unidade de equipamentos",
+        "output": 1,
+        "icon": "icon/componente_ametista.png",
+        "ingredientes": {
+            "origocrosta": 5,
+            "fibra_ametista": 5
+        }
+    },
+    "componente_ferrium": {
+        "nome": "Componente de ferrium",
+        "tempo_base": 10,
+        "qualidade": "verde",
+        "unidade_producao": "Unidade de equipamentos",
+        "output": 1,
+        "icon": "icon/componente_ferrium.png",
+        "ingredientes": {
+            "origocrosta": 10,
+            "ferrium": 10
+        }
+    },
+    "componente_criston": {
+        "nome": "Componente de ametista",
+        "tempo_base": 10,
+        "qualidade": "azul",
+        "unidade_producao": "Unidade de equipamentos",
+        "output": 1,
+        "icon": "icon/componente_criston.png",
+        "ingredientes": {
+            "origocrosta_compactada": 10,
+            "fibra_criston": 10
+        }
+    },
+
+
+
     "po_originium_denso": {
         "nome": "Pó de originium denso",
         "tempo_base": 2,
@@ -427,7 +476,6 @@
             "po_folha_rugosa": 1
         }
     },
-
     "po_origocrosta_denso": {
         "nome": "Pó de origocrosta denso",
         "tempo_base": 2,
@@ -437,6 +485,30 @@
         "icon": "icon/po_origocrosta_denso.png",
         "ingredientes": {
             "po_origocrosta": 2,
+            "po_folha_rugosa": 1
+        }
+    },
+    "po_carbono_denso": {
+        "nome": "Pó de carbono denso",
+        "tempo_base": 2,
+        "qualidade": "azul",
+        "unidade_producao": "Unidade de moagem",
+        "output": 1,
+        "icon": "icon/po_carbono_denso.png",
+        "ingredientes": {
+            "po_carbono": 2,
+            "po_folha_rugosa": 1
+        }
+    },
+    "po_criston": {
+        "nome": "Pó de criston",
+        "tempo_base": 2,
+        "qualidade": "azul",
+        "unidade_producao": "Unidade de moagem",
+        "output": 1,
+        "icon": "icon/po_criston.png",
+        "ingredientes": {
+            "po_ametista": 2,
             "po_folha_rugosa": 1
         }
     },
